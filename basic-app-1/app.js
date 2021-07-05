@@ -1,7 +1,8 @@
 const app = Vue.createApp({
     data: function() { // 'data() {}' is the same notation, but more modern
         return {
-            testMessage: 'This is my test message',
+            testMessage1: 'Learn Vue!',
+            testMessage2: 'Master Vue!',
             vueLink: 'https://vuejs.org/'
         }
     },
@@ -9,9 +10,9 @@ const app = Vue.createApp({
         testOutput() {
             const randomNumber = Math.random();
             if (randomNumber < 0.5) {
-                return 'Learn Vue!';
+                return this.testMessage1;
             } else {
-                return 'Master Vue!';
+                return this.testMessage2;
             }
         }
     }
