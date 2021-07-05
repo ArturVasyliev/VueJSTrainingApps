@@ -3,6 +3,7 @@ const app = Vue.createApp({
         return {
             testMessage1: 'Learn Vue!',
             testMessage2: 'Master Vue!',
+            testHtml: '<h2>Master Vue!</h2>',
             vueLink: 'https://vuejs.org/'
         }
     },
@@ -14,6 +15,9 @@ const app = Vue.createApp({
             } else {
                 return this.testMessage2;
             }
+        },
+        outputHtml() {
+            return this.testHtml;
         }
     }
 });
