@@ -2,7 +2,8 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: ''
+      name: '',
+      confirmedName: ''
     };
   },
   methods: {
@@ -12,8 +13,18 @@ const app = Vue.createApp({
     reduce(num) {
       this.counter = this.counter - num;
     },
+    reset(num) {
+      this.counter = num;
+    },
     setName(event, param) {
       this.name = event.target.value + ' ' + param;
+    },
+    confirmName() {
+      this.confirmedName = this.name;
+    },
+    submitForm(event) {
+      //event.preventDefault(); // good option to prevent reloading of the page on form submit
+      alert('Submitted!');
     },
   }
 });

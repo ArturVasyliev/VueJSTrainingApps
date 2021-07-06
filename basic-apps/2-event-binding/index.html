@@ -20,9 +20,14 @@
       <h2>Events in Action</h2>
       <button v-on:click="add(5)">Add 5</button>
       <button v-on:click="reduce(5)">Remove 5</button>
+      <button v-on:click.right="reset(0)">Right click</button>
       <p>Result: {{ counter }}</p>
-      <input type="text" v-on:input="setName($event, 'Test')" />
-      <p>Your Name: {{ name }}</p>
+      <input type="text" v-on:input="setName($event, 'Test')" v-on:keyup.enter="confirmName" />
+      <p>Your Name: {{ confirmedName }}</p>
+      <form v-on:submit.prevent="submitForm"> <!--Modifier .prevent works like event.preventDefault()-->
+        <input type="text" />
+        <button>Sign up</button>
+      </form>
     </section>
   </body>
 </html>
