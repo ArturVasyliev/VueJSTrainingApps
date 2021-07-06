@@ -21,6 +21,13 @@
       <p v-html="outputHtml()"></p>
       <p>{{ testOutput() }}</p>
       <p>Learn more <a v-bind:href="vueLink">about Vue</a></p>
+
+      <h2>{{ name }}</h2>
+      <p>{{ age }}</p>
+      <p>{{ ageInFiveYears() }} in 5 years</p>
+      <p>Random number: {{ Math.random() }}</p>
+      <p><input type="text" v-bind:value="name" /></p>
+      <img v-bind:src="imageUrl" />
     </section>
   </body>
 </html>

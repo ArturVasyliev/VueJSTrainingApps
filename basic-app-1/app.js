@@ -4,7 +4,10 @@ const app = Vue.createApp({
             testMessage1: 'Learn Vue!',
             testMessage2: 'Master Vue!',
             testHtml: '<h2>Master Vue!</h2>',
-            vueLink: 'https://vuejs.org/'
+            vueLink: 'https://vuejs.org/',
+            name: "Artur",
+            age: 24,
+            imageUrl: "https://static.wikia.nocookie.net/witcher/images/a/a0/Tw3_Geralt_of_Rivia_newest_render.png"
         }
     },
     methods: {
@@ -18,6 +21,9 @@ const app = Vue.createApp({
         },
         outputHtml() {
             return this.testHtml;
+        },
+        ageInFiveYears() {
+            return this.age + 5;
         }
     }
 });
