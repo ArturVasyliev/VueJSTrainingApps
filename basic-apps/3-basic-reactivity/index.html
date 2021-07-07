@@ -25,12 +25,15 @@
       <!-- <input type="text" v-bind:value="name" v-on:input="setName($event)"> -->
       <!-- That can be simplified with v-model: -->
       <input type="text" v-model="name">
+      <input type="text" v-model="lastname">
       <button v-on:click="resetInput">Reset Input</button>
       <!-- Vue reexecutes every method on the page when anything is recalculated by it
       because it can't know if some field (like 'counter') wasn't used in the method so when clicking Add or Reduce button outputFullName will be called - that's preformance issue -->
       <!-- <p>Your Name: {{ outputFullName() }}</p> -->
       <!-- To avoid reexecution of methods computed properties can be used -->
       <p>Your Name: {{ fullname }}</p>
+      <!-- Watcher can be used similar to computed properties -->
+      <p>Your Name: {{ fullname2 }}</p>
     </section>
   </body>
 </html>
