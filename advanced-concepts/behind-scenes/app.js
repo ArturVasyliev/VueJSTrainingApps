@@ -20,6 +20,19 @@ const app = Vue.createApp({
 
 app.mount("#app");
 
+// It's possible to have more than 1 app attached to the view.
+// But you can't access the data from one in another.
+// Consider them as stand-alone apps.
+const app2 = Vue.createApp({
+  data() {
+    return {
+      number: 5,
+    };
+  },
+});
+
+app2.mount("#app2");
+
 // ----JS is not reactive by default----
 let message = "Hello";
 let longMessage = message + " World!";
@@ -40,7 +53,7 @@ const handler = {
     console.log("key: " + key); // 'message'
     console.log("value: " + value); // 'Hello!!!!!'
     if (key === "message") {
-      target.longMessage = value + ' World!';
+      target.longMessage = value + " World!";
       target.message = value;
     }
   },
