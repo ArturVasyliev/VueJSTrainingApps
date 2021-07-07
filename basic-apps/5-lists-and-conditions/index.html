@@ -18,9 +18,17 @@
     </header>
     <section id="user-goals">
       <h2>My course goals</h2>
-      <input type="text" />
-      <button>Add Goal</button>
-      <p>No goals have been added yet - please start adding some!</p>
+      <input type="text" v-model="enteredGoalValue" />
+      <button @click="addGoal">Add Goal</button>
+      <!-- v-if accepts computed property, method or expression and remove content from DOM -->
+      <p v-if="goals.length === 0">No goals have been added yet</p>
+      <!-- v-else or v-else-if can be used only after the element that contains v-if -->
+      <p v-else-if="goals.length > 10">Wow, there are so many goals!</p>
+      <p v-else>Keep on keeping on!</p>
+      <!-- v-show doesn't remove the content from DOM, it sets display:none 
+       should be used instead of v-if with elements that will be frequently shown/hidden
+       to improve the performance by not touching DOM structure -->
+      <p v-show="goals.length === 0">Please start adding some!</p>
       <ul>
         <li>Goal</li>
       </ul>
