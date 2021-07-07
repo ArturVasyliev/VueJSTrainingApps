@@ -1,8 +1,11 @@
 const app = Vue.createApp({
   data() {
+    // Vue tracks all properties returned from data.
+    // It wraps all properties with Proxies (scroll down) to track all changes.
+    // Then it finds the places where the property is used on the view and updates them (not the whole view)
     return {
-      currentUserInput: '',
-      message: 'Vue is great!',
+      currentUserInput: "",
+      message: "Vue is great!",
     };
   },
   methods: {
@@ -15,4 +18,33 @@ const app = Vue.createApp({
   },
 });
 
-app.mount('#app');
+app.mount("#app");
+
+// ----JS is not reactive by default----
+let message = "Hello";
+let longMessage = message + " World!";
+console.log(longMessage); // 'Hello World!'
+message = "Hello!!!";
+console.log(longMessage); // still 'Hello World!'
+
+// ----Proxies are used to achieve reactivity----
+const data = {
+  message: "Hello!",
+  longMessage: "Hello World!",
+};
+const handler = {
+  // triggered when any property of proxy is set
+  set(target, key, value) {
+    console.log("target: ");
+    console.log(target); // data object inside proxy
+    console.log("key: " + key); // 'message'
+    console.log("value: " + value); // 'Hello!!!!!'
+    if (key === "message") {
+      target.longMessage = value + ' World!';
+      target.message = value;
+    }
+  },
+};
+const proxy = new Proxy(data, handler);
+proxy.message = "Hello!!!!!";
+console.log(proxy.longMessage);
