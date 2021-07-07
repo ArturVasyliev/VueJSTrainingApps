@@ -28,7 +28,9 @@
       <button v-on:click="resetInput">Reset Input</button>
       <!-- Vue reexecutes every method on the page when anything is recalculated by it
       because it can't know if some field (like 'counter') wasn't used in the method so when clicking Add or Reduce button outputFullName will be called - that's preformance issue -->
-      <p>Your Name: {{ outputFullName() }}</p>
+      <!-- <p>Your Name: {{ outputFullName() }}</p> -->
+      <!-- To avoid reexecution of methods computed properties can be used -->
+      <p>Your Name: {{ fullname }}</p>
     </section>
   </body>
 </html>
