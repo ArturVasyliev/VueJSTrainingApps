@@ -24,8 +24,9 @@
       <div :class="{demo: true, active: boxBSelected}"
         @click="boxSelected('B')"></div>
       <!-- The best version -->
+      <!-- class object can be taken from computed property -->
       <div class="demo" 
-        :class="{active: boxCSelected}"
+        :class="boxCClasses"
         @click="boxSelected('C')"></div>
     </section>
   </body>
