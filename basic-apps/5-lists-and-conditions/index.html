@@ -32,7 +32,14 @@
       <ul v-if="goals.length > 0">
         <!-- <li v-for="goal in goals">{{ goal }}</li> -->
         <!-- It's also possible to access item with it's index -->
-        <li v-for="(goal, index) in goals" @click="removeGoal(index)">{{ goal }}</li>
+        <!-- We need to apply key attribute for v-for in order to prevent strange bugs that may 
+          be reproduced because of techniques that VueJS uses for performance optimization 
+          (It reuses DOM elements in some cases). Let's assume that each goal is unique. -->
+        <li v-for="(goal, index) in goals" :key="goal" @click="removeGoal(index)">
+          <p>{{ goal }} - {{ index }}</p>
+          <!-- @click.stop prevents calling of <li> click event handler when you click on input -->
+          <input type="text" @click.stop />
+        </li>
       </ul>
 
       <!-- v-for support iterating through object's properties -->
