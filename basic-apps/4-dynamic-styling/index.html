@@ -21,12 +21,13 @@
       <div :class="boxASelected ? 'demo active' : 'demo'"
         @click="boxSelected('A')"></div>
       <!-- Smarter version -->
-      <div :class="{demo: true, active: boxBSelected}"
+      <!-- Array syntax can include dynamic classes, static classes and computed properties -->
+      <div :class="['demo', {active: boxBSelected}]"
         @click="boxSelected('B')"></div>
       <!-- The best version -->
       <!-- class object can be taken from computed property -->
-      <div class="demo" 
-        :class="boxCClasses"
+      <div
+        :class="['demo', boxCClasses]"
         @click="boxSelected('C')"></div>
     </section>
   </body>
