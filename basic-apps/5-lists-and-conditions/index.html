@@ -29,9 +29,22 @@
        should be used instead of v-if with elements that will be frequently shown/hidden
        to improve the performance by not touching DOM structure -->
       <p v-show="goals.length === 0">Please start adding some!</p>
-      <ul>
-        <li>Goal</li>
+      <ul v-if="goals.length > 0">
+        <li v-for="goal in goals">{{ goal }}</li>
+        <!-- It's also possible to access item with it's index -->
+        <!-- <li v-for="(goal, index) in goals">{{ goal }} - {{ index }}</li> -->
       </ul>
+
+      <!-- v-for support iterating through object's properties -->
+      <!--<ul>
+        <li v-for="value in {name: 'Artur', age: 24}">{{ value }}</li> 
+        <li v-for="(value, key, index) in {name: 'Artur', age: 24}">{{ index }}) {{ key }} - {{ value }}</li>
+      </ul>-->
+
+      <!-- v-for support iterating through numbers -->
+      <!-- <ul>
+        <li v-for="num in 10">{{ num }}</li>
+      </ul> -->
     </section>
   </body>
 </html>
