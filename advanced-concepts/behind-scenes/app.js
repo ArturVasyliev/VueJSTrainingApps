@@ -13,7 +13,11 @@ const app = Vue.createApp({
       this.currentUserInput = event.target.value;
     },
     setText() {
-      this.message = this.currentUserInput;
+      // It's possible to get some element from the view by 'ref'
+      // This is a good option when you want to get the data from some element once,
+      // without using default property tracking (using Proxy behind the scenes)
+      console.dir(this.$refs.userText);
+      this.message = this.$refs.userText.value;
     },
   },
 });

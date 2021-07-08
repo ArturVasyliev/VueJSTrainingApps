@@ -19,7 +19,10 @@
     <!-- The markup inside the section below is a template of Vue app -->
     <section id="app">
       <h2>How Vue Works</h2>
-      <input type="text" @input="saveInput">
+      <!-- ref attribute can be added to any element -->
+      <!-- In the input below we don't attach any method or model to track the changes each
+        time user updates input value, we will get the value from the input ONCE when we need it -->
+      <input type="text" ref="userText">
       <button @click="setText">Set Text</button>
       <p>{{ message }}</p>
     </section>
