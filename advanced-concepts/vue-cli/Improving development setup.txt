@@ -8,3 +8,14 @@ A: 1) Now when we change something we need to reload the page.
 
 Vue CLI improves development of Vue apps. It requires Node.js installed.
 Then run 'npm install -g @vue/cli' to install Vue CLI.
+Then cd to the project folder and run 'vue create app-name'.
+After choosing configurations, the default project will be created. The configs I used:
+1) Preset => Manually select features
+2) Features => Choose Vue version, Babel, Linter/Formatter
+3) Vue version => 3.x
+4) Pick a linter => ESLint with error prevention only
+5) Lint features => Lint on save
+6) Place for configs (Babel, ESLint etc.) => In dedicated config files
+7) Save as a preset => n
+
+After the project is created run 'cd first-app-with-vue-cli' and 'npm run serve' to run the server and open the page.
