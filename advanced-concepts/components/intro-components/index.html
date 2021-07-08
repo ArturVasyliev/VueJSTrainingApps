@@ -18,14 +18,11 @@
     </header>
     <section id="app">
       <ul>
-        <li v-for="friend in friends" :key="friend.id">
-          <h2>{{ friend.name }}</h2>
-          <button>Show Details</button>
-          <ul>
-            <li><strong>Phone:</strong> {{ friend.phone }} </li>
-            <li><strong>Email:</strong> {{ friend.email }} </li>
-          </ul>
-        </li>
+        <!-- If we want to have each element of the list reactive
+          e.g. when clicking Show Details only open element's details block
+          we need to use components to prevent complicated code and bugs -->
+        <friend-contact></friend-contact>
+        <friend-contact></friend-contact>
       </ul>
     </section>
   </body>
