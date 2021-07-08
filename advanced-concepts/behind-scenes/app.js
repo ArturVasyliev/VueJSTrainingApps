@@ -24,6 +24,10 @@ app.mount("#app");
 // But you can't access the data from one in another.
 // Consider them as stand-alone apps.
 const app2 = Vue.createApp({
+  // Template can be defined not only in the markup, but in here:
+  template: `
+  <p>{{ number }}</p>
+  `,
   data() {
     return {
       number: 5,
