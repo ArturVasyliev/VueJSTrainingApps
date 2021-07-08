@@ -24,3 +24,5 @@ After the project is created run 'cd first-app-with-vue-cli' and 'npm run serve'
 'src' folder contains all source code.
 
 Install Vetur VS Code extension to present .vue files properly.
+
+If you want to setup existing project on your machine (second-vue-cli-app) run 'npm install' in the project folder to load node_modules.
