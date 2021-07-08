@@ -1,3 +1,16 @@
+// There are different steps in Vue app lifecycle present after VUE.CREATEAPP:
+// 1) beforeCreate()
+// 2) created() - created only Vue instance, not view template
+// 3) beforeMount() - called after template is compiled with real data
+// 4) mounted() - now we can see something on the screen
+// Done: as a result we have Mounted Vue Instance
+// Then there is another lifecycle when Vue DATA IS CHANGED:
+// 1) beforeUpdate()
+// 2) updated() - we can see updated data on the screen
+// The app can be UNMOUNTED and in this case there are following steps:
+// 1) beforeUnmount()
+// 2) unmounted()
+
 const app = Vue.createApp({
   data() {
     // Vue tracks all properties returned from data.
@@ -20,9 +33,42 @@ const app = Vue.createApp({
       this.message = this.$refs.userText.value;
     },
   },
+  // configuring create app events hooks
+  beforeCreate() {
+    console.log("beforeCreate()");
+  },
+  created() {
+    console.log("created()");
+  },
+  beforeMount() {
+    console.log("beforeMount()");
+  },
+  mounted() {
+    console.log("mounted()");
+  },
+  // configuring data update events hooks
+  beforeUpdate() {
+    console.log("beforeUpdate()");
+  },
+  updated() {
+    console.log("updated()");
+  },
+  // configuring unmount events hooks
+  beforeUnmount() {
+    console.log("beforeUnmount()");
+  },
+  unmounted() {
+    console.log("unmounted()");
+  },
 });
 
 app.mount("#app");
+
+setTimeout(() => {
+  // The line below is used to test unmount events hooks
+  // app.unmount();
+}, 3000);
+
 
 // It's possible to have more than 1 app attached to the view.
 // But you can't access the data from one in another.
