@@ -1,0 +1,10 @@
+Q: Why do we need a proper (development) web server?
+A: To server pages with http/https and not as files (simulate realistic circumstances). Some JS features may work only with pages served using http/https.
+
+Q: Why do we need better developer experience?
+A: 1) Now when we change something we need to reload the page.
+   2) IDE auto-completion is highly limited. No typos warnings.
+   3) We only work in one script file and one html that can be very large.
+
+Vue CLI improves development of Vue apps. It requires Node.js installed.
+Then run 'npm install -g @vue/cli' to install Vue CLI.
