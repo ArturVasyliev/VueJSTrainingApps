@@ -24,6 +24,9 @@
         time user updates input value, we will get the value from the input ONCE when we need it -->
       <input type="text" ref="userText">
       <button @click="setText">Set Text</button>
+      <!-- When message is updated in the code, Vue rerenders only this <p> element.
+        This is because of the specific setup that Vue has. Vue has an instance that stores all the app data, then it has Virtual DOM that represents Browser's DOM but stores it in memory. It's not performance optimized to read the whole Browser's DOM and compare it with updated Virtual DOM to find the changes and render them. Instead Vue creates updated Virtual DOM and compares it to the previous Virtual DOM (it's simplified but close explanation). Then it takes only changed elements and rerenders them in Browser's DOM.
+         -->
       <p>{{ message }}</p>
     </section>
     <section id="app2">
