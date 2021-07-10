@@ -24,12 +24,35 @@
 export default {
   // props become available as data properties using this.
   // so there shouldn't be dashes in props names
-  props: [
-    "name",
-    "phoneNumber", // translated to 'phone-number' HTML attribute
-    "emailAddress",
-    "isFavorite"
-  ],
+  // props may contain an array of props names or an object:
+  props: {
+    name: {
+      type: String,
+      // required determines if we need to pass the value from above
+      required: true
+    },
+    phoneNumber: {
+      // possible prop types: String, Number, Boolean, Array, Object
+      // Date, Function, Symbol, Date etc.
+      type: String,
+      required: true
+    },
+    emailAddress: {
+      type: String,
+      required: true
+    },
+    isFavorite: {
+      type: String,
+      required: false,
+      // default value when property is not required
+      // default can also be a function that returns value
+      default: '0',
+      // we can validate the property value
+      validator: function(value){
+        return value === '0' || value === '1';
+      }
+    },
+  },
   data() {
     return {
       detailsAreVisible: false,
