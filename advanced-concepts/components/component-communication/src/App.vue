@@ -4,8 +4,16 @@
       <h1>My Friends</h1>
     </header>
     <ul>
-      <friend-contact></friend-contact>
-      <friend-contact></friend-contact>
+      <friend-contact 
+        name="Tony Stark"
+        phone-number="012345 6789"
+        email-address="ironman@superhero.com">
+      </friend-contact>
+      <friend-contact 
+        name="Peter Parker"
+        phone-number="98751 24456"
+        email-address="spiderman@superhero.com">
+      </friend-contact>
     </ul>
   </section>
 </template>
