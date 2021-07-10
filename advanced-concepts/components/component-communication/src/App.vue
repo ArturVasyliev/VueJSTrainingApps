@@ -7,12 +7,14 @@
       <friend-contact 
         name="Tony Stark"
         phone-number="012345 6789"
-        email-address="ironman@superhero.com">
+        email-address="ironman@superhero.com"
+        is-favorite="1">
       </friend-contact>
       <friend-contact 
         name="Peter Parker"
         phone-number="98751 24456"
-        email-address="spiderman@superhero.com">
+        email-address="spiderman@superhero.com"
+        is-favorite="0">
       </friend-contact>
     </ul>
   </section>
