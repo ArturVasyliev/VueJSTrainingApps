@@ -57,9 +57,22 @@ export default {
       // }
     }
   },
+  // Basic definition of emits:
+  emits: ['toggle-favorite'],
+  // Advanced definition of emits:
+  // emits: {
+  //   "toggle-favorite": function(id) {
+  //     if (id) {
+  //       return true;
+  //     } else {
+  //       console.warn("Id is missing");
+  //       return false;
+  //     }
+  //   }
+  // },
   data() {
     return {
-      detailsAreVisible: false,
+      detailsAreVisible: false
       // We can copy the value from Prop and change the copy
       // But this will affect only the current component
       // We still won't be able to mutate the value above (in App comp.)
@@ -85,11 +98,11 @@ export default {
     toggleFavorite() {
       // Instead of using local property of this component
       //this.friendIsFavorite = !this.friendIsFavorite;
-      
+
       // You can emit an event that parent component can listen to
       // and change original isFavorite property. You can pass any number
       // of parameters after the name of the event
-      this.$emit('toggle-favorite', this.id);
+      this.$emit("toggle-favorite", this.id);
     }
   }
 };
