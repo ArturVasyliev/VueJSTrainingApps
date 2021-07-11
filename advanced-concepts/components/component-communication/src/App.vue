@@ -5,15 +5,13 @@
     </header>
     <ul>
       <friend-contact 
-        name="Tony Stark"
-        phone-number="012345 6789"
-        email-address="ironman@superhero.com"
-        is-favorite="1">
-      </friend-contact>
-      <friend-contact 
-        name="Peter Parker"
-        phone-number="98751 24456"
-        email-address="spiderman@superhero.com">
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.email"
+        :is-favorite="true"> <!-- To pass something that is not string 
+          we need to bind the value to the attribute  -->
       </friend-contact>
     </ul>
   </section>
@@ -25,16 +23,16 @@ export default {
     return {
       friends: [
         {
-          id: "manuel",
-          name: "Manuel Lorenz",
-          phone: "0123 45678 90",
-          email: "manuel@localhost.com",
+          id: "ironman",
+          name: "Tony Stark",
+          phone: "012345 6789",
+          email: "ironman@superhero.com",
         },
         {
-          id: "julie",
-          name: "Julie Jones",
-          phone: "0987 654421 21",
-          email: "julie@localhost.com",
+          id: "spiderman",
+          name: "Peter Parker",
+          phone: "9745452 6789",
+          email: "spiderman@superhero.com",
         },
       ],
     };

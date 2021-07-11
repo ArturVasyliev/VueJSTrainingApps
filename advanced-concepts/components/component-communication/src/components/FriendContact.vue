@@ -1,8 +1,8 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavorite === "1" ? "(Favorite)" : "" }}</h2>
+    <h2>{{ name }} {{ friendIsFavorite ? "(Favorite)" : "" }}</h2>
     <button @click="toggleFavorite">
-      {{ friendIsFavorite === "1" ? "Remove from" : "Set as" }} Favorite
+      {{ friendIsFavorite ? "Remove from" : "Set as" }} Favorite
     </button>
     <button @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
@@ -42,26 +42,20 @@ export default {
       required: true
     },
     isFavorite: {
-      type: String,
+      type: Boolean,
       required: false,
       // default value when property is not required
       // default can also be a function that returns value
-      default: '0',
+      default: false,
       // we can validate the property value
-      validator: function(value){
-        return value === '0' || value === '1';
-      }
+      // validator: function(value){
+      //   return value === '0' || value === '1';
+      // }
     },
   },
   data() {
     return {
       detailsAreVisible: false,
-      friend: {
-        id: "manuel",
-        name: "Manuel Lorenz",
-        phone: "0123 45678 90",
-        email: "manuel@localhost.com"
-      },
       // We can copy the value from Prop and change the copy
       // But this will affect only the current component
       // We still won't be able to mutate the value above (in App comp.)
@@ -85,11 +79,7 @@ export default {
     // }
 
     toggleFavorite() {
-      if (this.friendIsFavorite === "1") {
-        this.friendIsFavorite = "0";
-      } else {
-        this.friendIsFavorite = "1";
-      }
+      this.friendIsFavorite = !this.friendIsFavorite;
     }
   }
 };
