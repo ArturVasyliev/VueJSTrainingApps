@@ -17,6 +17,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+    <button @click="$emit('delete', id)">Delete</button>
   </li>
 </template>
 
@@ -58,7 +59,7 @@ export default {
     }
   },
   // Basic definition of emits:
-  emits: ['toggle-favorite'],
+  emits: ["toggle-favorite", "delete"],
   // Advanced definition of emits:
   // emits: {
   //   "toggle-favorite": function(id) {

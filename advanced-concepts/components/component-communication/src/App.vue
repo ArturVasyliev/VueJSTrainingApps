@@ -14,6 +14,7 @@
         :email-address="friend.email"
         :is-favorite="friend.isFavorite"
         @toggle-favorite="toggleFavoriteStatus"
+        @delete="deleteContact"
       >
         <!-- To pass something that is not string 
           we need to bind the value to the attribute  -->
@@ -77,6 +78,10 @@ export default {
         isFavorite: false
       };
       this.friends.push(newFriendContact);
+    },
+    deleteContact(friendId){
+      this.friends = this.friends.filter(
+        friend => friend.id !== friendId);
     }
   }
 };
