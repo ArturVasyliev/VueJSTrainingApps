@@ -1,8 +1,8 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavorite ? "(Favorite)" : "" }}</h2>
+    <h2>{{ name }} {{ isFavorite ? "(Favorite)" : "" }}</h2>
     <button @click="toggleFavorite">
-      {{ friendIsFavorite ? "Remove from" : "Set as" }} Favorite
+      {{ isFavorite ? "Remove from" : "Set as" }} Favorite
     </button>
     <button @click="toggleDetails">
       {{ detailsAreVisible ? "Hide" : "Show" }} Details
@@ -26,6 +26,10 @@ export default {
   // so there shouldn't be dashes in props names
   // props may contain an array of props names or an object:
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       // required determines if we need to pass the value from above
@@ -46,12 +50,12 @@ export default {
       required: false,
       // default value when property is not required
       // default can also be a function that returns value
-      default: false,
+      default: false
       // we can validate the property value
       // validator: function(value){
       //   return value === '0' || value === '1';
       // }
-    },
+    }
   },
   data() {
     return {
@@ -59,7 +63,7 @@ export default {
       // We can copy the value from Prop and change the copy
       // But this will affect only the current component
       // We still won't be able to mutate the value above (in App comp.)
-      friendIsFavorite: this.isFavorite
+      // friendIsFavorite: this.isFavorite
     };
   },
   methods: {
@@ -79,7 +83,13 @@ export default {
     // }
 
     toggleFavorite() {
-      this.friendIsFavorite = !this.friendIsFavorite;
+      // Instead of using local property of this component
+      //this.friendIsFavorite = !this.friendIsFavorite;
+      
+      // You can emit an event that parent component can listen to
+      // and change original isFavorite property. You can pass any number
+      // of parameters after the name of the event
+      this.$emit('toggle-favorite', this.id);
     }
   }
 };

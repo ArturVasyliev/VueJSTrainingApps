@@ -4,13 +4,17 @@
       <h1>My Friends</h1>
     </header>
     <ul>
-      <friend-contact 
+      <friend-contact
         v-for="friend in friends"
         :key="friend.id"
+        :id="friend.id"
         :name="friend.name"
         :phone-number="friend.phone"
         :email-address="friend.email"
-        :is-favorite="true"> <!-- To pass something that is not string 
+        :is-favorite="friend.isFavorite"
+        @toggle-favorite="toggleFavoriteStatus"
+      >
+        <!-- To pass something that is not string 
           we need to bind the value to the attribute  -->
       </friend-contact>
     </ul>
@@ -27,16 +31,26 @@ export default {
           name: "Tony Stark",
           phone: "012345 6789",
           email: "ironman@superhero.com",
+          isFavorite: true
         },
         {
           id: "spiderman",
           name: "Peter Parker",
           phone: "9745452 6789",
           email: "spiderman@superhero.com",
-        },
-      ],
+          isFavorite: false
+        }
+      ]
     };
   },
+  methods: {
+    // Here we handle our custom event that we created in
+    // FriendContact component with 'id' parameter
+    toggleFavoriteStatus(friendId) {
+      const friend = this.friends.find(friend => friend.id === friendId);
+      friend.isFavorite = !friend.isFavorite;
+    }
+  }
 };
 </script>
 
