@@ -18,6 +18,15 @@
           we need to bind the value to the attribute  -->
       </friend-contact>
     </ul>
+    <!-- Prop and Event Fallthrough allows to pass events and props 
+      to the components that don't define these props or events.
+      In this case, 'type' and 'click' values are passed to <button> inside BaseButton component. You can get access to these 
+      fallthrough props on a built-in $attrs property (e.g. this.$attrs ).
+      This can be handy to build pure presentational components where 
+      you don't want to define all props and events individually -->
+    <base-button type="submit" @click="baseButtonClick">
+      Click me
+    </base-button>
   </section>
 </template>
 
@@ -49,6 +58,9 @@ export default {
     toggleFavoriteStatus(friendId) {
       const friend = this.friends.find(friend => friend.id === friendId);
       friend.isFavorite = !friend.isFavorite;
+    },
+    baseButtonClick() {
+      alert("Base button click");
     }
   }
 };
