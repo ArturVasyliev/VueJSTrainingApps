@@ -24,9 +24,13 @@
       fallthrough props on a built-in $attrs property (e.g. this.$attrs ).
       This can be handy to build pure presentational components where 
       you don't want to define all props and events individually -->
-    <base-button type="submit" @click="baseButtonClick">
-      Click me
-    </base-button>
+    <base-button type="submit" @click="baseButtonClick"> Click me </base-button>
+    <!-- It's possible to pass props one by one -->
+    <user-data :firstname="person.firstname" :lastname="person.lastname">
+    </user-data>
+    <!-- Or use 'Binding all Props' to allow Vue to automatically
+      map properties of an object to Props by name  -->
+    <user-data v-bind="person"></user-data>
   </section>
 </template>
 
@@ -49,7 +53,8 @@ export default {
           email: "spiderman@superhero.com",
           isFavorite: false
         }
-      ]
+      ],
+      person: { firstname: "Artur", lastname: "Vasyliev" }
     };
   },
   methods: {
