@@ -9,6 +9,9 @@
       (activateTopic) to it. So the component looks strange -->
     <!-- Instead of passing data through knowledge-base 
       to knowledge-grid, we can use Provide + Inject -->
+    <!-- Use Provide + Inject pattern to remove unnecessary
+      code from pass-through components (like knowledge-base)
+      in all other cases it's better to use props and events -->
     <knowledge-base> </knowledge-base>
   </div>
 </template>
@@ -48,6 +51,8 @@ export default {
     // so no we pass data property that will be automatically
     // updated in child components if we change it here
     // (this is data-binding)
+    // It can be hard to detect where these data is injected - 
+    // that's a downside of using Provide Inject
     return {
       topics: this.topics,
       selectTopic: this.activateTopic
