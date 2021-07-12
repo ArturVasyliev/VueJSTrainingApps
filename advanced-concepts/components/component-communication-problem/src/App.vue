@@ -9,7 +9,7 @@
       (activateTopic) to it. So the component looks strange -->
     <!-- Instead of passing data through knowledge-base 
       to knowledge-grid, we can use Provide + Inject -->
-    <knowledge-base @select-topic="activateTopic"> </knowledge-base>
+    <knowledge-base> </knowledge-base>
   </div>
 </template>
 
@@ -49,7 +49,8 @@ export default {
     // updated in child components if we change it here
     // (this is data-binding)
     return {
-      topics: this.topics
+      topics: this.topics,
+      selectTopic: this.activateTopic
     };
   },
   methods: {
