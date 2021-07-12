@@ -4,6 +4,9 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
+    <!-- Knowledge-base is a component that doesn't have it's 
+      own logic, because we pass data (topics) and method 
+      (activateTopic) to it. So the component looks strange -->
     <knowledge-base :topics="topics" @select-topic="activateTopic"></knowledge-base>
   </div>
 </template>
