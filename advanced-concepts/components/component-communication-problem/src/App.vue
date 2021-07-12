@@ -7,7 +7,9 @@
     <!-- Knowledge-base is a component that doesn't have it's 
       own logic, because we pass data (topics) and method 
       (activateTopic) to it. So the component looks strange -->
-    <knowledge-base :topics="topics" @select-topic="activateTopic"></knowledge-base>
+    <!-- Instead of passing data through knowledge-base 
+      to knowledge-grid, we can use Provide + Inject -->
+    <knowledge-base @select-topic="activateTopic"> </knowledge-base>
   </div>
 </template>
 
@@ -21,7 +23,7 @@ export default {
           title: 'The Basics',
           description: 'Core Vue basics you have to know',
           fullText:
-            'Vue is a great framework and it has a couple of key concepts: Data binding, events, components and reactivity - that should tell you something!',
+            'Vue is a great framework and it has a couple of key concepts: Data binding, events, components and reactivity - that should tell you something!'
         },
         {
           id: 'components',
@@ -29,17 +31,44 @@ export default {
           description:
             'Components are a core concept for building Vue UIs and apps',
           fullText:
-            'With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.',
-        },
+            'With components, you can split logic (and markup) into separate building blocks and then combine those building blocks (and re-use them) to build powerful user interfaces.'
+        }
       ],
-      activeTopic: null,
+      activeTopic: null
+    };
+  },
+  // Here we provide the data that can be injected in
+  // child components without explicitly passing it in
+  // component's attributes.
+  // We can provide an object:
+  // provide: {topics: []},
+  // Or we can provide a function that can hold
+  // our data property of the current component:
+  provide() {
+    // so no we pass data property that will be automatically
+    // updated in child components if we change it here
+    // (this is data-binding)
+    return {
+      topics: this.topics
     };
   },
   methods: {
     activateTopic(topicId) {
-      this.activeTopic = this.topics.find((topic) => topic.id === topicId);
-    },
+      this.activeTopic = this.topics.find(topic => topic.id === topicId);
+    }
   },
+  mounted() {
+    // This proves that topics are updated in knowledge-grid 
+    // component dynamically from App component context
+    setTimeout(() => {
+      this.topics.push({
+        id: 'events',
+        title: 'Events',
+        description: 'Events are imporant',
+        fullText: 'Events allow you to trigger code on demand'
+      });
+    }, 3000);
+  }
 };
 </script>
 
